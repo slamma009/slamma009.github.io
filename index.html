@@ -5,24 +5,106 @@
 </head>
 
 <body>
-    <p>First String: <textarea data-bind = "value: firstString" ></textarea></p>
-    <p>Second String: <input data-bind = "value: secondString" /></p>
+    <p>Survey Scan <textarea data-bind = "textInput: scanString" ></textarea></p>
 
-    <p>First String: <strong data-bind = "text: firstString">Hi</strong></p>
-    <p>Second String: <strong data-bind = "text: secondString">There</strong></p>
 
-    <p>Derived String: <strong data-bind = "text: thirdString"></strong></p>
+    <p>Toal M3 <strong data-bind="text: surveyResult().m3"></strong></p>
+
+    <table>
+      <thead>
+         <tr>
+            <td>Ore</td>
+            <td>Amount</td>
+         </tr>
+      </thead>
+      <tbody data-bind ="foreach: surveyResult().oreGroups">
+         <!-- ko foreach: ores -->
+         <tr>
+            <td data-bind="text: ore"></td>
+            <td data-bind="text: amount"></td>
+         </tr>
+         <!-- /ko -->
+      </tbody>
+    </table>
 
     <script>
 
        function AppViewModel() {
-          this.firstString = ko.observable("Enter First String");
-          this.secondString = ko.observable("Enter Second String");
+          this.scanString = ko.observable("");
 
-          this.thirdString = ko.computed(function() {
-             return this.firstString() + " " + this.secondString();
+          this.surveyResult = ko.computed(function() {
+             return parse(this.scanString());
           }, this);
        }
+
+      function parse(str){
+         let overall = 0;
+         let oreGroups = [];
+         let lines = str.trim().split("\n")
+         for( let l of lines){
+            if(!l.length) continue;
+            
+            let words = l.trim().split(/\s+/g);
+            console.log(words.length)
+            let name = words.shift()
+            let group = name;
+            if(words.length === 6){
+               group = words.shift(); 
+               name += ' '+group; 
+            }
+            
+            let m3 = words[1]
+            
+            if(!m3) continue;
+            if(!oreGroups[group]) {
+               console.log(group);
+               oreGroups[group] = {
+                  group: group,
+                  ores: []
+               }
+            }
+            if(!oreGroups[group].ores[name])
+            { 
+               oreGroups[group].ores[name] = {
+                  ore: name,
+                  amount: 0
+               }
+               console.log(oreGroups[group].ores[name].ore)
+            }
+
+            let m3Number = +m3.replace(/,/g,'');
+            if(isNaN(m3Number)) 
+               continue;
+
+            oreGroups[group].ores[name].amount += m3Number;
+            overall += m3Number
+         }
+
+         return {
+            m3:overall,
+            oreGroups:toArray(oreGroups)
+         }
+      }
+
+      function toArray(oreGroups)
+      {
+         let castedGroup = [];
+         let index = 0;
+         for(let group in oreGroups) 
+         {
+            castedGroup[index] = {
+               ores: []
+            }
+            let oreIndex = 0;
+            for(let ore in oreGroups[group].ores)
+            {
+               castedGroup[index].ores[oreIndex] = oreGroups[group].ores[ore];
+               oreIndex += 1;
+            }
+            index += 1;
+         }
+         return castedGroup
+      }
 
        // Activates knockout.js
        ko.applyBindings(new AppViewModel());
