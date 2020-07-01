@@ -32,8 +32,6 @@
 
     <p>Toal Asteroid M3: <strong data-bind="oreAmount: surveyResult().m3"></strong></p>
 
-    <textarea data-bind="text: test"></textarea>
-
     <script>
 
        function AppViewModel() {
@@ -72,9 +70,6 @@
             return parse(this.scanString());
          }, this);
 
-         this.test = ko.computed(function() {
-            return btoa(JSON.stringify(this.surveyResult()));
-         }, this);
 
          this.copyToClipboard = function(string) {
 
