@@ -5,10 +5,8 @@
 </head>
 
 <body>
-   <p>Survey Scan <textarea data-bind = "textInput: scanString" ></textarea></p>
-   <button data-bind="click: copyToClipboard('https://slamma009.github.io/?scan=' + btoa(JSON.stringify(surveyResult())))">
-      Copy Results
-   </button>
+    <p>Survey Scan <textarea data-bind = "textInput: scanString" ></textarea></p>
+
     <table class="table">
       <thead>
          <tr>
@@ -56,57 +54,12 @@
             },
             defaultPrecision: 0  
          };
+          this.scanString = ko.observable("");
 
-         this.getParamOrDefault = function(){
-            let result = getParams(window.location.href)["survey"];
-            if(!result)
-               return "";
-            
-            return atob(result);
-         }
-         this.scanString = ko.observable(this.getParamOrDefault());
-
-         this.surveyResult = ko.computed(function() {
-            return parse(this.scanString());
-         }, this);
-
-
-         this.copyToClipboard = function(string) {
-
-            console.log("copying string " + string)
-            // Create an auxiliary hidden input
-            var aux = document.createElement("input");
-
-            // Get the text from the element passed into the input
-            aux.setAttribute("value", string);
-
-            // Append the aux input to the body
-            document.body.appendChild(aux);
-
-            // Highlight the content
-            aux.select();
-
-            // Execute the copy command
-            document.execCommand("copy");
-
-            // Remove the input from the body
-            document.body.removeChild(aux);
-
-         };
+          this.surveyResult = ko.computed(function() {
+             return parse(this.scanString());
+          }, this);
        }
-
-      function getParams(url) {
-         var params = {};
-         var parser = document.createElement('a');
-         parser.href = url;
-         var query = parser.search.substring(1);
-         var vars = query.split('&');
-         for (var i = 0; i < vars.length; i++) {
-            var pair = vars[i].split('=');
-            params[pair[0]] = decodeURIComponent(pair[1]);
-         }
-         return params;
-      }
 
       function parse(str){
          let overall = 0;
