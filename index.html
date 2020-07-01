@@ -1,8 +1,33 @@
 <html>
+<head>
+    <script type='text/javascript' src="Libs/Knockout/knockout-3.5.1.js"></script>
+    <link rel="stylesheet" href="main.css" />
+</head>
 
 <body>
+    <p>First String: <textarea data-bind = "value: firstString" ></textarea></p>
+    <p>Second String: <input data-bind = "value: secondString" /></p>
 
-<p>Ope</p>
+    <p>First String: <strong data-bind = "text: firstString">Hi</strong></p>
+    <p>Second String: <strong data-bind = "text: secondString">There</strong></p>
+
+    <p>Derived String: <strong data-bind = "text: thirdString"></strong></p>
+
+    <script>
+
+       function AppViewModel() {
+          this.firstString = ko.observable("Enter First String");
+          this.secondString = ko.observable("Enter Second String");
+
+          this.thirdString = ko.computed(function() {
+             return this.firstString() + " " + this.secondString();
+          }, this);
+       }
+
+       // Activates knockout.js
+       ko.applyBindings(new AppViewModel());
+    </script>
+
 
 </body>
 
