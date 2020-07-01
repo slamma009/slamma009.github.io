@@ -7,31 +7,53 @@
 <body>
     <p>Survey Scan <textarea data-bind = "textInput: scanString" ></textarea></p>
 
-
-    <p>Toal M3 <strong data-bind="text: surveyResult().m3"></strong></p>
-
-    <table>
+    <table class="table">
       <thead>
          <tr>
-            <td>Ore</td>
-            <td>Amount</td>
-            <td>Average</td>
+            <td class = 'table-header'>Ore</td>
+            <td class = 'table-header'>Amount (Units)</td>
+            <td class = 'table-header'>Amount (m3)</td>
+            <td class = 'table-header'>Average</td>
          </tr>
       </thead>
       <tbody data-bind ="foreach: surveyResult().oreGroups">
          <!-- ko foreach: ores -->
-         <tr>
+         <tr class="table-row" data-bind="css: { 'group1' : $parentContext.$index() % 2 === 0 }">
             <td data-bind="text: ore"></td>
-            <td data-bind="text: amount"></td>
-            <td data-bind="text: average"></td>
+            <td class="center-align" data-bind="number: units"></td>
+            <td class="center-align" data-bind="oreAmount: amount"></td>
+            <td class="center-align" data-bind="oreAmount: average"></td>
          </tr>
          <!-- /ko -->
       </tbody>
     </table>
 
+    <p>Toal Asteroid M3: <strong data-bind="oreAmount: surveyResult().m3"></strong></p>
+
     <script>
 
        function AppViewModel() {
+         ko.bindingHandlers.oreAmount = {
+            update: function(element, valueAccessor, allBindingsAccessor) {
+               var value = ko.utils.unwrapObservable(valueAccessor()),
+                  precision = ko.utils.unwrapObservable(allBindingsAccessor().precision) || ko.bindingHandlers.oreAmount.defaultPrecision,
+                  formattedValue = value.toFixed(precision);
+
+               ko.bindingHandlers.text.update(element, function() { return formattedValue.replace(/\B(?=(\d{3})+(?!\d))/g, ",") + " m3"; });
+            },
+            defaultPrecision: 0  
+         };
+
+         ko.bindingHandlers.number = {
+            update: function(element, valueAccessor, allBindingsAccessor) {
+               var value = ko.utils.unwrapObservable(valueAccessor()),
+                  precision = ko.utils.unwrapObservable(allBindingsAccessor().precision) || ko.bindingHandlers.oreAmount.defaultPrecision,
+                  formattedValue = value.toFixed(precision);
+
+               ko.bindingHandlers.text.update(element, function() { return formattedValue.replace(/\B(?=(\d{3})+(?!\d))/g, ",") });
+            },
+            defaultPrecision: 0  
+         };
           this.scanString = ko.observable("");
 
           this.surveyResult = ko.computed(function() {
@@ -54,10 +76,19 @@
                group = words.shift(); 
                name += ' '+group; 
             }
-            
+
+            let units = words[0];
             let m3 = words[1]
+
+            if(!m3 || !units)
+               continue;
+
+            let m3Number = +m3.replace(/,/g,'');
+            let unitsNumber = +units.replace(/,/g,'');
             
-            if(!m3) continue;
+            if(isNaN(m3Number) || isNaN(unitsNumber))
+               continue;
+
             if(!oreGroups[group]) {
                console.log(group);
                oreGroups[group] = {
@@ -70,15 +101,15 @@
                oreGroups[group].ores[name] = {
                   ore: name,
                   amount: 0,
+                  units: 0,
                   count: 0,
                   average: 0
                }
             }
 
-            let m3Number = +m3.replace(/,/g,'');
-            if(isNaN(m3Number)) 
-               continue;
 
+
+            oreGroups[group].ores[name].units += unitsNumber;
             oreGroups[group].ores[name].amount += m3Number;
             oreGroups[group].ores[name].count++;
             overall += m3Number
@@ -97,12 +128,14 @@
          for(let group in oreGroups) 
          {
             castedGroup[index] = {
+               index: index,
                ores: []
             }
             let oreIndex = 0;
             for(let ore in oreGroups[group].ores)
             {
                castedGroup[index].ores[oreIndex] = oreGroups[group].ores[ore];
+               castedGroup[index].ores[oreIndex].groupIndex = index;
                castedGroup[index].ores[oreIndex].average = oreGroups[group].ores[ore].amount / oreGroups[group].ores[ore].count;
                oreIndex += 1;
             }
