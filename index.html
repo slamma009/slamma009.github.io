@@ -18,7 +18,7 @@
       </thead>
       <tbody data-bind ="foreach: surveyResult().oreGroups">
          <!-- ko foreach: ores -->
-         <tr class="table-row" data-bind="css: { 'group1' : $parentContext.$index() % 2 === 0 }">
+         <tr class="table-row" data-bind="css: { 'group1' : $parentContext.$index() % 2 === 0, 'group2' : $parentContext.$index() %2 === 1 }">
             <td data-bind="text: ore"></td>
             <td class="center-align" data-bind="number: units"></td>
             <td class="center-align" data-bind="oreAmount: amount"></td>
