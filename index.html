@@ -15,6 +15,7 @@
          <tr>
             <td>Ore</td>
             <td>Amount</td>
+            <td>Average</td>
          </tr>
       </thead>
       <tbody data-bind ="foreach: surveyResult().oreGroups">
@@ -22,6 +23,7 @@
          <tr>
             <td data-bind="text: ore"></td>
             <td data-bind="text: amount"></td>
+            <td data-bind="text: average"></td>
          </tr>
          <!-- /ko -->
       </tbody>
@@ -67,9 +69,10 @@
             { 
                oreGroups[group].ores[name] = {
                   ore: name,
-                  amount: 0
+                  amount: 0,
+                  count: 0,
+                  average: 0
                }
-               console.log(oreGroups[group].ores[name].ore)
             }
 
             let m3Number = +m3.replace(/,/g,'');
@@ -77,6 +80,7 @@
                continue;
 
             oreGroups[group].ores[name].amount += m3Number;
+            oreGroups[group].ores[name].count++;
             overall += m3Number
          }
 
@@ -99,6 +103,7 @@
             for(let ore in oreGroups[group].ores)
             {
                castedGroup[index].ores[oreIndex] = oreGroups[group].ores[ore];
+               castedGroup[index].ores[oreIndex].average = oreGroups[group].ores[ore].amount / oreGroups[group].ores[ore].count;
                oreIndex += 1;
             }
             index += 1;
