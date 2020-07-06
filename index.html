@@ -8,9 +8,10 @@
 <body ng-app="surveyScanner" ng-controller="mainController">
 
 
-   <p>Survey Scan <textarea ng-change="parseSurvey(scanString)" ng-model="scanString" ></textarea></p>
-
-
+   <p>Survey Scan<br>
+      <textarea ng-change="parseSurvey(scanString)" ng-model="scanString" ></textarea></p>
+   <button ng-click="scanString=''; surveyResult={};">Clear</button>
+   <br><br>
    <table class="table">
       <thead>
          <tr>
@@ -31,7 +32,7 @@
    </table>
 
 
-   <p>Toal Asteroid M3: <strong>{{surveyResult.m3 | number:0}} m3</strong></p>
+   <p>Total Asteroid M3: <strong>{{surveyResult.m3 | number:0}} m3</strong></p>
 
 </body>
 
