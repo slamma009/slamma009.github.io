@@ -29,7 +29,7 @@ app.controller('mainController', function ($scope){
                     }
                 }
                 
-                computed += "- " + addNumberCommas(ore.amount.toFixed()) + " m3\n";
+                computed += "- " + addNumberCommas(ore.amount) + " m3\n";
             }
         }
         share(computed);
