@@ -89,7 +89,7 @@ app.controller('mainController', function ($scope){
         }
     
         $scope.surveyResult = {
-            m3:overall,
+            m3:overall.toFixed(),
             oreGroups:toArray(oreGroups)
         }
     };
@@ -107,9 +107,12 @@ app.controller('mainController', function ($scope){
             let oreIndex = 0;
             for(let ore in oreGroups[group].ores)
             {
-                castedGroup[index].ores[oreIndex] = oreGroups[group].ores[ore];
+                castedGroup[index].ores[oreIndex] = {};
+                castedGroup[index].ores[oreIndex].ore = oreGroups[group].ores[ore].ore;
+                castedGroup[index].ores[oreIndex].units = oreGroups[group].ores[ore].units.toFixed();
+                castedGroup[index].ores[oreIndex].amount = oreGroups[group].ores[ore].amount.toFixed();
                 castedGroup[index].ores[oreIndex].groupIndex = index;
-                castedGroup[index].ores[oreIndex].average = oreGroups[group].ores[ore].amount / oreGroups[group].ores[ore].count;
+                castedGroup[index].ores[oreIndex].average = (oreGroups[group].ores[ore].amount / oreGroups[group].ores[ore].count).toFixed(2);
                 oreIndex += 1;
             }
             index += 1;
