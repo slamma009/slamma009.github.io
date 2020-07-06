@@ -3,6 +3,37 @@ app.controller('mainController', function ($scope){
 
     $scope.surveyString = "";
     $scope.surveyResult = {};
+    $scope.copyResults = function() {
+        let computed = "total: " + addNumberCommas($scope.surveyResult.m3) + " m3\n";
+
+        let longest = 0;
+        for(let group of $scope.surveyResult.oreGroups) {
+            for(let ore of group.ores){
+                if(ore.ore.length > longest)
+                {
+                    longest = ore.ore.length;
+                }
+            }
+        }
+
+        longest += 1;
+        for(let group of $scope.surveyResult.oreGroups) {
+            for(let ore of group.ores){
+
+                computed += ore.ore;
+
+                let dif = Math.ceil((longest - ore.ore.length) / 4);
+                if(dif > 0){
+                    for(var i=0; i<dif; ++i){
+                        computed += "\t";
+                    }
+                }
+                
+                computed += "- " + addNumberCommas(ore.amount) + " m3\n";
+            }
+        }
+        share(computed);
+    }
     $scope.parseSurvey = function (str) {
         let overall = 0;
         let oreGroups = [];
@@ -76,7 +107,6 @@ app.controller('mainController', function ($scope){
             let oreIndex = 0;
             for(let ore in oreGroups[group].ores)
             {
-                castedGroup[index].group = group;
                 castedGroup[index].ores[oreIndex] = oreGroups[group].ores[ore];
                 castedGroup[index].ores[oreIndex].groupIndex = index;
                 castedGroup[index].ores[oreIndex].average = oreGroups[group].ores[ore].amount / oreGroups[group].ores[ore].count;
@@ -85,5 +115,24 @@ app.controller('mainController', function ($scope){
             index += 1;
         }
         return castedGroup
+    }
+
+    function addNumberCommas(number){ 
+        return (number + "").replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,");
+    }
+    function share(text_to_share) {
+        // create temp element
+        var copyElement = document.createElement("textArea");
+
+        copyElement.value = text_to_share;
+
+        copyElement.id = 'tempCopyToClipboard';
+        angular.element(document.body.append(copyElement));
+    
+        copyElement.select();
+    
+        // copy & cleanup
+        document.execCommand('copy');
+        copyElement.remove();
     }
 });
