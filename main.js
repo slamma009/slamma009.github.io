@@ -3,39 +3,18 @@ app.controller('mainController', function ($scope){
 
     $scope.surveyString = "";
     $scope.surveyResult = {};
+    $scope.groupsOnly = true;
     $scope.copyResults = function() {
         let computed = "Survey Results\nBelt Total: " + addNumberCommas($scope.surveyResult.m3) + " m3\n\n";
 
-        let longest = 0;
-        let oreGroups = [];
+        let longest = 5;
         let groupIndex =0;
-        for(let group of $scope.surveyResult.oreGroups) {
-            let newGroup = {
-                Name:  group.group.substring(0,5),
-                Amount: 0,
-                Average: 0
-
-            };
-
-            if(newGroup.Name.length > longest)
-            {
-                longest = newGroup.Name.length;
-
-            }
-            
-            let oreCount = 0;
-
-            for(let ore of group.ores){
-                
-                newGroup.Amount += parseFloat(ore.amount);
-                newGroup.Average += parseFloat(ore.average);
-                oreCount++;
-            }
-            console.log(newGroup.Amount);
-            newGroup.Average = (newGroup.Average / oreCount).toFixed(0);
-            oreGroups[groupIndex] = newGroup;
-            groupIndex++;
-        }
+        // for(let group of $scope.surveyResult.oreGroups) {
+        //     if(group.Group.length > longest)
+        //     {
+        //         longest = group.Group.length;
+        //     }
+        // }
 
         let dif = Math.ceil((longest - 4) / 4);
         computed += "Name";
@@ -46,11 +25,11 @@ app.controller('mainController', function ($scope){
 
 
         longest += 1;
-        for(let group of oreGroups) {
+        for(let group of $scope.surveyResult.oreGroups) {
 
-            computed += group.Name;
+            computed += group.Group.substring(0,5);
 
-            let dif = Math.ceil((longest - group.Name.length) / 4);
+            let dif = Math.ceil((longest - 5) / 4);
             if(dif > 0){
                 for(var i=0; i<dif; ++i){
                     computed += "\t";
@@ -130,20 +109,30 @@ app.controller('mainController', function ($scope){
         {
             castedGroup[index] = {
                 index: index,
-                group: group,
+                Group: group,
+                Units: 0,
+                Amount: 0,
+                Average: 0,
                 ores: []
             }
             let oreIndex = 0;
             for(let ore in oreGroups[group].ores)
             {
+
                 castedGroup[index].ores[oreIndex] = {};
                 castedGroup[index].ores[oreIndex].ore = oreGroups[group].ores[ore].ore;
-                castedGroup[index].ores[oreIndex].units = oreGroups[group].ores[ore].units.toFixed();
-                castedGroup[index].ores[oreIndex].amount = oreGroups[group].ores[ore].amount.toFixed();
+                castedGroup[index].ores[oreIndex].units = parseInt(oreGroups[group].ores[ore].units.toFixed());
+                castedGroup[index].ores[oreIndex].amount = parseInt(oreGroups[group].ores[ore].amount.toFixed());
                 castedGroup[index].ores[oreIndex].groupIndex = index;
                 castedGroup[index].ores[oreIndex].average = (oreGroups[group].ores[ore].amount / oreGroups[group].ores[ore].count).toFixed(2);
+
+                castedGroup[index].Units += castedGroup[index].ores[oreIndex].units;
+                castedGroup[index].Amount += castedGroup[index].ores[oreIndex].amount;
+                castedGroup[index].Average += parseFloat(castedGroup[index].ores[oreIndex].average);
+
                 oreIndex += 1;
             }
+            castedGroup[index].Average = (castedGroup[index].Average / oreIndex).toFixed(2);
             index += 1;
         }
         return castedGroup
