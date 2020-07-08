@@ -10,8 +10,6 @@
 
 <body ng-app="surveyScanner" ng-controller="mainController">
 
-   <button ng-click="periodSeperator = !periodSeperator">Use <span ng-show="periodSeperator">comas</span><span ng-show="!periodSeperator">periods</span> for thousandeths seperator </button>
-
    <p>Paste Survey Scan results<br>
       <textarea ng-change="parseSurvey(scanString)" ng-model="scanString" ></textarea></p>
    <button ng-click="scanString=''; surveyResult={};">Clear</button>
