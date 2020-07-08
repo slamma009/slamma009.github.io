@@ -1,4 +1,5 @@
-<html>
+<!doctype html>
+<html lang="en">
 <head>
    <script src="Libs/Angular/angular-1-8-0.js"></script>
    <script type="text/javascript" src="main.js"></script>
@@ -9,8 +10,9 @@
 
 <body ng-app="surveyScanner" ng-controller="mainController">
 
+   <button ng-click="periodSeperator = !periodSeperator">Use <span ng-show="periodSeperator">comas</span><span ng-show="!periodSeperator">periods</span> for thousandeths seperator </button>
 
-   <p>Survey Scan<br>
+   <p>Paste Survey Scan results<br>
       <textarea ng-change="parseSurvey(scanString)" ng-model="scanString" ></textarea></p>
    <button ng-click="scanString=''; surveyResult={};">Clear</button>
    <br><br>

@@ -4,6 +4,7 @@ app.controller('mainController', function ($scope){
     $scope.surveyString = "";
     $scope.surveyResult = {};
     $scope.groupsOnly = true;
+    $scope.periodSeperator = false;
     $scope.copyResults = function() {
         let computed = "Survey Results\nBelt Total: " + addNumberCommas($scope.surveyResult.m3) + " m3\n\n";
 
@@ -63,9 +64,21 @@ app.controller('mainController', function ($scope){
     
             if(!m3 || !units)
                 continue;
-    
-            let m3Number = +m3.replace(/,/g,'');
-            let unitsNumber = +units.replace(/,/g,'');
+                
+            let m3Number = 0; 
+            let unitsNumber = 0;
+            if($scope.periodSeperator)
+            { 
+                m3Number = +m3.replace(/\./g,'');
+                unitsNumber = +units.replace(/\./g,'');
+            }
+            else
+            {            
+                m3Number = +m3.replace(/,/g,'');
+                unitsNumber = +units.replace(/,/g,'');
+            }
+        
+            
             
             if(isNaN(m3Number) || isNaN(unitsNumber))
                 continue;
