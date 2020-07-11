@@ -1,0 +1,36 @@
+
+<p>Paste Survey Scan results <br />
+<textarea ng-change="parseSurvey(scanString)" ng-model="scanString" ></textarea></p>
+ <button ng-click="scanString=''; surveyResult={};">Clear</button>
+ <br /><br />
+ <button ng-click="groupsOnly = !groupsOnly;">Toggle Groups</button>
+ <br />
+ <table class="table">
+    <thead>
+       <tr>
+          <td ng-show="!groupsOnly" class = 'table-header'>Ore</td>
+          <td ng-show="groupsOnly" class = 'table-header'>Ore Group</td>
+          <td class = 'table-header'>Amount (Units)</td>
+          <td class = 'table-header'>Amount (m3)</td>
+          <td class = 'table-header'>Average</td>
+       </tr>
+    </thead>
+    <tbody ng-repeat="result in surveyResult.oreGroups">
+          <tr ng-show="groupsOnly" class="table-row" ng-class="{'group1': $even, 'group2' : $odd}">
+             <td>{{result.Group}}</td>
+             <td class="center-align">{{result.Units | number:0}}</td>
+             <td class="center-align">{{result.Amount | number:0}} m3</td>
+             <td class="center-align">{{result.Average | number:0}} m3</td>
+          </tr>
+          <tr ng-show="!groupsOnly" class="table-row" ng-class="{'group1': $parent.$even, 'group2' : $parent.$odd}" ng-repeat="ore in result.ores">
+             <td>{{ore.ore}}</td>
+             <td class="center-align">{{ore.units | number:0}}</td>
+             <td class="center-align">{{ore.amount | number:0}} m3</td>
+             <td class="center-align">{{ore.average | number:0}} m3</td>
+          </tr>
+    </tbody>
+ </table>
+
+
+ <p>Total Asteroid M3: <strong>{{surveyResult.m3 | number:0}} m3</strong></p>
+ <button ng-click="copyResults()">Copy Results</button>
