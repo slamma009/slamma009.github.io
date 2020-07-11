@@ -1,0 +1,15 @@
+.disabled  {
+    color: rgb(88, 88, 88);
+}
+
+thead {
+    padding:10px 4px;
+    font-weight: 200;
+    font-size: 1.5em;
+    color:rgb(209, 195, 123);
+}
+tbody {
+    padding:10px 4px;
+    font-weight: 100;
+    font-size: 14px;
+}

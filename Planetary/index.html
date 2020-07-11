@@ -1,1 +1,41 @@
-<p>PI</p>
+<link rel="stylesheet" href="Planetary/planetary.css" />
+<table style="width:100%">
+    <thead>
+        <tr>
+            <td>Planet</td>
+            <td>Resource</td>
+            <td>Refined</td>
+            <td>Specialized</td>
+            <td>Advanced</td>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+                <div ng-repeat="planet in Planets">
+                    <input type="checkbox" ng-model="planet.Selected"  ng-change="Recalculate()"/> {{planet.Name}}
+                </div>
+            </td>
+            <td>
+                <div ng-repeat="key in ResourceKeys">
+                    <p  ng-class="{'disabled': !Resources[key].Active }">{{Resources[key].Resource}} -> {{Resources[key].Processed}}</p>
+                </div>
+            </td>
+            <td>
+                <div ng-repeat="key in RefinedKeys">
+                    <p  ng-class="{'disabled': !Refined[key].Active }">{{Refined[key].Name}}</p>
+                </div>
+            </td>
+            <td>
+                <div ng-repeat="key in SpecializedKeys">
+                    <p ng-class="{'disabled': !Specialized[key].Active }">{{Specialized[key].Name}}</p>
+                </div>
+            </td>
+            <td>
+                <div ng-repeat="key in AdvancedKeys">
+                    <p  ng-class="{'disabled': !Advanced[key].Active }">{{Advanced[key].Name}}</p>
+                </div>
+            </td>
+        </tr>
+    </tbody>
+</table>

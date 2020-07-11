@@ -6,6 +6,8 @@ app.config(function($routeProvider) {
         templateUrl : "SurveyScanner/index.html"
     })
     .when("/Planetary", {
-        templateUrl : "Planetary/index.html"
+        controller: "planetryController",
+        templateUrl : "Planetary/index.html",
+        css: "Planetary/test.css"
     });
 });
