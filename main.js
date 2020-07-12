@@ -7,7 +7,6 @@ app.config(function($routeProvider) {
     })
     .when("/Planetary", {
         controller: "planetryController",
-        templateUrl : "Planetary/index.html",
-        css: "Planetary/test.css"
+        templateUrl : "Planetary/index.html"
     });
 });
