@@ -1,13 +1,13 @@
 <link rel="stylesheet" href="SurveyScanner/survey.css" />
 <div class="container">
    <div class="row">
-      <div class="col-sm-2 text-center">
+      <div class="col-lg-2 text-center">
          <h3>Raw Scan</h3>
          <p class="small-text">Copy the results from the survey scanner window in the EvE client and paste them here</p>
          <textarea ng-change="parseSurvey(scanString)" ng-model="scanString" ></textarea></p>
          <button class="btn btn-dark" ng-click="scanString=''; surveyResult={};">Clear</button>
       </div>
-      <div class="col-sm-8">
+      <div class="col-lg-8">
          <div class="row">
             <div class="col">
                <h2 class=" text-center">Survey Processor</h2>
@@ -59,6 +59,6 @@
             </div>
          </div>
       </div>
-      <div class="col-sm-2"></div>
+      <div class="col-lg-2"></div>
    </div>
 </div>
