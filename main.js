@@ -8,5 +8,9 @@ app.config(function($routeProvider) {
     .when("/Planetary", {
         controller: "planetryController",
         templateUrl : "Planetary/index.html"
+    })
+    .when("/Artificial", {
+        //controller: "planetryController",
+        templateUrl : "Artificial/index.html"
     });
 });
