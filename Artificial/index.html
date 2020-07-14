@@ -248,6 +248,7 @@
         </div>
         <div ng-show="whSpaceActive" class="row  table-body">
             <div class="col-sm-12">
+                <p><i>This is an overview of womrholes. All of this information and more can be found on <a href="https://wiki.eveuniversity.org/Wormholes#Wormhole_Text">Eve University</a></i></p>
                 <p>
                     Wormhole space, or J-Space as it's sometimes called, are solar systems that can only be reached by the use of wormholes.
                     These systems exist outside of the New Eden solar systems, and thus offer no protection or safety that your standard systems provide.
@@ -255,7 +256,94 @@
                     They offer great prosperity to players willing to adventure in to them, but with that prosperity comes great risk. 
                 </p>
                 <p>
-                    To be continued...
+                    As mentioned, the only way in or out of these systems are through Womrholes which spawn naturally throughout New Eden. 
+                    Our system has what's called a High-Sec static wormhole. This means that we will always have at least 1 wormhole that connects to high-sec.
+                    As soon as the existing High-Sec status wormhole collapses, either naturally or due to ships passing through it, a new one will open up somewhere in our J-Space.
+                    Wormholes of any kind can spawn though, either connecting to any of the systems in New Eden, or other wormholes. 
+                </p>
+                <p>
+                    I've already mentioned how wormholes can collapse naturally, or by having ships pass through them. 
+                    If you look at the info for any wormhole you'll see 2 different lines of text, one indicating it's stability, and the other it's decay.
+                    The stability refers to the amount of time the womrhole has before it naturally collapses, and it can be 1 of 3 values:
+                    <div class="container">
+                        <div class ="row">
+                            <div class="col-md-6">
+                                <ul>
+                                    <li>This wormhole has <b>not yet begun</b> its natural cycle of decay and should last at least another day</li>
+                                    <li>This wormhole is <b>beginning to decay</b>, and probably won't last another day</li>
+                                    <li>This wormhole is <b>reaching the end</b> of its natural lifetime</li>
+                                </ul>
+                            </div>
+                            <div class="col-md-6">
+                                <table class="table table-dark">
+                                    <tbody>
+                                        <tr>
+                                            <td>not yet begun</td>
+                                            <td>more than 24 hours</td>
+                                        </tr>
+                                        <tr>
+                                            <td>beginning to decay</td>
+                                            <td>between 4 and 24 hours</td>
+                                        </tr>
+                                        <tr>
+                                            <td>reaching the end</td>
+                                            <td>less than 4 hours</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    The decay is referencing the amount of mass the worm hole has left, and once it reaches 0 the wormhole will collapse. The decay also comes in 3 flavors:
+
+                    <div class="container">
+                        <div class ="row">
+                            <div class="col-md-6">
+                                <ul>
+                                    <li>This wormhole has <b>not yet</b> had its stability significantly disrupted by ships passing through it</li>
+                                    <li>This wormhole has had its stability reduced by ships passing through it, but <b>not to a critical degree</b> yet</li>
+                                    <li>This wormhole has had its <b>stability critically disrupted</b> by the mass of numerous ships passing through and is on the verge of collapse</li>
+                                </ul>
+                            </div>
+                            <div class="col-md-6">
+                                <table class="table table-dark">
+                                    <tbody>
+                                        <tr>
+                                            <td>not yet</td>
+                                            <td>50%</td>
+                                        </tr>
+                                        <tr>
+                                            <td>not to a critical degree</td>
+                                            <td>between 50% and 10%</td>
+                                        </tr>
+                                        <tr>
+                                            <td>stability critically disrupted</td>
+                                            <td>less than 10%</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </p>
+                <p>
+                    "<i>Okay that's cool and all, but what does this mass mean? How long does the wormhole stay open? It's mass is 50% of what?</i>"
+                </p>
+                <p>
+                    Well I'm glad you asked all of that.
+                    Every wormhole has set attirbutes, including it's Mass, it's Max individual Mass, and it's decay time.
+                    Everytime a ship jumps through the wormhole, that ships mass is removed from the wormholes overall Mass, thus decaying the wormhole.
+                    The individual mass value for the wormhole is a restriction on what ships can go through the wormhole. 
+                    If the wormhole only allows 5,000,000 kg, then any ship with a mass larger then that will not be able to enter the wormhole.
+
+                </p>
+                <p>
+                    "<i>Okay, but where do I find these wormhole attributes</i>"
+                </p>
+                <p>
+                    If you look at the info for a wormhole, it will have this Id in the title, something like <b>Q003</b>.
+                    Compare this Id to the table found on <a href="https://wiki.eveuniversity.org/Wormhole_attributes">Eve University</a>, which can also simply be found by googling "EvE Wormhole Attributes".
+                    In our example of Q003 you can see that the wormhole leads to Null-Sec, has 1,000,000,000 kg of mass, a max individual mass of 5,000,000 kg, and a lifespan of 16 hours.
                 </p>
             </div>
         </div>

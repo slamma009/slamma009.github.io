@@ -17,9 +17,17 @@
 .table-header:hover {
     cursor:pointer;
 }
-
-
 .table-body { 
     background-color:#1a1a17;
     padding: 10px;
+}
+
+.basic-table{ 
+    border-collapse: separate;
+    border: 1px solid #efefef !important;
+    background-color: #000;
+}
+
+.basic-table thead {
+    font-weight: bold;
 }
