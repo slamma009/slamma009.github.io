@@ -1,0 +1,25 @@
+.table-row {
+    border: 1px solid #3d3724;
+}
+
+.table-header {
+    background-color: #141412;
+}
+
+.table-header h3 {
+    display:inline;
+    padding-left: 25px;
+}
+.table-header i {
+    position: absolute;
+    top: 25%;
+}
+.table-header:hover {
+    cursor:pointer;
+}
+
+
+.table-body { 
+    background-color:#1a1a17;
+    padding: 10px;
+}

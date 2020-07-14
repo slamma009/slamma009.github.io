@@ -1,3 +1,4 @@
+<link rel="stylesheet" href="Artificial/artificial.css" />
 <div class="container">
     <div class="row">
         <div class="col-sm-12 text-center">
@@ -21,112 +22,181 @@
             </p>
         </div>
     </div>
-    <div class="row">
-        <div class="col-sm-12  text-center">
-            <h3>The 10 commandments</h3>
-            <ol>
-                <li>Use D-scan</li>
-                <li>USE D-SCAN</li>
-                <li>You will die.</li>
-                <li>Name your ship</li>
-                <li>Never use local chat</li>
-                <li>Do not go afk</li>
-                <li>If enemies are around, dock up</li>
-                <li>Pay attention to connecting wormholes</li>
-                <li>Join a fleet</li>
-                <li>-----</li>
-            </ol>
+
+    <div class="container table-row">
+        <div ng-click="youWillDieActive = !youWillDieActive;" class="row table-header">
+            <div class="col-sm-12">
+                <i ng-show="!youWillDieActive" class="fas fa-chevron-right"></i>
+                <i ng-show="youWillDieActive" class="fas fa-chevron-down"></i>
+                <h3>You. Will. Die.</h3>
+            </div>
+        </div>
+        <div ng-show="youWillDieActive" class="row  table-body">
+            <div class="col-sm-12">
+                <p>
+                    This is just an unfortunate fact about wormhole space. Like null-sec there are no restrictions on PvP combat, other then the ship limitations provided by wormholes themselves. 
+                    This means that anybody who is not docked is a target for someone with an twitchy trigger finger. 
+                    Never fly anything you aren't willing to lose, and always be prepared to lose it. 
+                    Never blame others for not defending you, watching the hole closely enough, or anything of the such.
+                    Don't blame yourself for the same reasons.
+                    Wormholes are dangerous places, and death is unavoidable.
+                </p>
+            </div>
         </div>
     </div>
 
-    <div class="row">
-        <div class="col-sm-12">
-            <h3>Use D-Scan</h3>
-            <p>
-                Wormholes do not offer any way to see who is in the system with you.
-                The only way to be aware of your surroundings is to use the Direction Scanner tool.
-                This tool is not infalable, simple counter measures like cloaking devices can easily negate it's effectiveness, but it's still the best way to know when danger is coming.
-            </p>
-            <p>
-                If you have never used the D-Scanner before, then let me tell you the basics. You can open it by hitting <i>V</i> on your keyboard, or clicking the scanners button to the left of your capacitor while in space.
-                Set the tool to scan the maximum range, as well as 360 degrees around your ship.
-                Make sure your overview shows all ship types, as the D-Scan uses the same settings as it.
-                Finally, Click "Scan" or hit V on your keyboard. Make sure to constantly check D-Scan while inside of the wormhole!
-            </p>
+    <div class="container table-row">
+        <div ng-click="dScanActive = !dScanActive;" class="row table-header">
+            <div class="col-sm-12 ">
+                <i ng-show="!dScanActive" class="fas fa-chevron-right"></i>
+                <i ng-show="dScanActive" class="fas fa-chevron-down"></i>
+                <h3>Use D-Scan</h3>
+            </div>
+        </div>
+        <div ng-show="dScanActive" class="row  table-body">
+            <div class="col-sm-12">
+                <p>
+                    Wormholes do not offer any way to see who is in the system with you.
+                    The only way to be aware of your surroundings is to use the Direction Scanner tool.
+                    This tool is not infalable, simple counter measures like cloaking devices can easily negate it's effectiveness, but it's still the best way to know when danger is coming.
+                </p>
+                <p>
+                    If you have never used the D-Scanner before, then let me tell you the basics. You can open it by hitting <i>V</i> on your keyboard, or clicking the scanners button to the left of your capacitor while in space.
+                    Set the tool to scan the maximum range, as well as 360 degrees around your ship.
+                    Make sure your overview shows all ship types, as the D-Scan uses the same settings as it.
+                    Finally, Click "Scan" or hit V on your keyboard. Make sure to constantly check D-Scan while inside of the wormhole!
+                </p>
+            </div>
         </div>
     </div>
 
-    <div class="row">
-        <div class="col-sm-12">
-            <h3>You. Will. Die.</h3>
-            <p>
-               This is just an unfortunate fact about wormhole space. Like null-sec there are no restrictions on PvP combat, other then the ship limitations provided by wormholes themselves. 
-               This means that anybody who is not docked is a target for someone with an twitchy trigger finger. 
-               Never fly anything you aren't willing to lose, and always be prepared to lose it. 
-               Never blame others for not defending you, watching the hole closely enough, or anything of the such.
-               Don't blame yourself for the same reasons.
-               Wormholes are dangerous places, and death is unavoidable.
-            </p>
+    <div class="container table-row">
+        <div ng-click="nameShipActive = !nameShipActive;" class="row table-header">
+            <div class="col-sm-12">
+                <i ng-show="!nameShipActive" class="fas fa-chevron-right"></i>
+                <i ng-show="nameShipActive" class="fas fa-chevron-down"></i>
+                <h3>Name Your ship</h3>
+            </div>
+        </div>
+        <div ng-show="nameShipActive" class="row  table-body">
+            <div class="col-sm-12">
+                <p>
+                    The name of your ship should be changed for 2 very important reasons. 
+                    The first being that having a ship such as "Slamma009's Porpoise" means that any player in the Wormhole now knows who they are fighting.
+                    You might not think this is important, but simple information like that can lead to large implication for your safety.
+                </p>
+                <p>
+
+                    The second reason is much more straight forward. If we all use the same name then anything we see on D-Scan will be known as friendly... for the most part.
+                    It's not impossible that someone would copy our ship names, so just because someone shares your name doesn't mean they're a friend. Always stay alert!
+                </p>
+                <p><b>Current Ship Name:</b> ☣(-(-_(-_-)_-)-)☣</p>
+            </div>
         </div>
     </div>
 
-    <div class="row">
-        <div class="col-sm-12">
-            <h3>Name Your ship</h3>
-            <p>
-                The name of your ship should be changed for 2 very important reasons. 
-                The first being that having a ship such as "Slamma009's Porpoise" means that any player in the Wormhole now knows who they are fighting.
-                You might not think this is important, but simple information like that can lead to large implication for your safety.
-            </p>
-            <p>
+    <div class="container table-row">
+        <div ng-click="localChatActive = !localChatActive;" class="row table-header">
+            <div class="col-sm-12">
+                <i ng-show="!localChatActive" class="fas fa-chevron-right"></i>
+                <i ng-show="localChatActive" class="fas fa-chevron-down"></i>
+                <h3>Never Use Local Chat</h3>
+            </div>
+        </div>
+        <div ng-show="localChatActive" class="row  table-body">
+            <div class="col-sm-12">
+                <p>
+                    One of the largest benefits of wormholes is that no one appears in the local chat. This is also one of the most dangerous parts about it.
+                    Someone could be in your wormhole right now, cloaked up and watching you, and you would never know. 
+                    By typing in local chat, you're broadcasting to everyone there, telling them "Hey, look I'm in this wormhole right now".
+                    Don't give them that advantage, stay hidden, and don't use local chat.
+                </p>
+            </div>
+        </div>
+    </div>
+    
+    <div class="container table-row">
+        <div ng-click="afkActive = !afkActive;" class="row table-header">
+            <div class="col-sm-12">
+                <i ng-show="!afkActive" class="fas fa-chevron-right"></i>
+                <i ng-show="afkActive" class="fas fa-chevron-down"></i>
+                <h3>Don't go AFK</h3>
+            </div>
+        </div>
+        <div ng-show="afkActive" class="row  table-body">
+            <div class="col-sm-12">
+                <p>
+                    With immenent danger all around it's important to stay alert. 
+                    You should always be prepared to warp yourself to safety if the need arises.
+                    This is a fact in  all of EvE, but especially in wormholes.
+                    If you need to leave for a bathroom break, to grab some water, anything;
+                    either warp to a safe and cloak yourself, or simply dock at the station.
+                </p>
+            </div>
+        </div>
+    </div>
+    
+    <div class="container table-row">
+        <div ng-click="enemiesActive = !enemiesActive;" class="row table-header">
+            <div class="col-sm-12">
+                <i ng-show="!enemiesActive" class="fas fa-chevron-right"></i>
+                <i ng-show="enemiesActive" class="fas fa-chevron-down"></i>
+                <h3>If Enemies are around. Dock. Up.</h3>
+            </div>
+        </div>
+        <div ng-show="enemiesActive" class="row  table-body">
+            <div class="col-sm-12">
+                <p>
+                    PvPers have a different mindset then you or I. 
+                    Fighting them only encourages them, killing them makes them want to come back. 
+                    The best way to get rid of them is to ignore them. To dock up and wait them out.
+                </p>
+                <p>
+                    If we've connected to a system filled with enemies, we should keep eyes on the wormhole at all times.
+                    We should try to NOT show ourselves to them if possible, and certainly not engage them.
+                    Rolling a wormhole with enemies on the other side will only attract attention, as those people in local will see 1 character coming in and out of their system constantly.
+                    It's best not to provoke them, and instead let the wormhole die naturally over time.
+                </p>
+                <p>
+                    If enemies are currently in our Wormhole, then unfortunately it's time to dock up.
+                    There's nothing you can do (to be finished...)
+                </p>
+            </div>
+        </div>
+    </div>
 
-                The second reason is much more straight forward. If we all use the same name then anything we see on D-Scan will be known as friendly... for the most part.
-                It's not impossible that someone would copy our ship names, so just because someone shares your name doesn't mean they're a friend. Always stay alert!
-            </p>
-            <p><b>Current Ship Name:</b> ☣(-(-_(-_-)_-)-)☣</p>
+    <div class="container table-row">
+        <div ng-click="watchHolesActive = !watchHolesActive;" class="row table-header">
+            <div class="col-sm-12">
+                <i ng-show="!watchHolesActive" class="fas fa-chevron-right"></i>
+                <i ng-show="watchHolesActive" class="fas fa-chevron-down"></i>
+                <h3>Watch the Holes</h3>
+            </div>
+        </div>
+        <div ng-show="watchHolesActive" class="row  table-body">
+            <div class="col-sm-12">
+                <p>
+                    ...
+                </p>
+            </div>
         </div>
     </div>
-    <div class="row">
-        <div class="col-sm-12">
-            <h3>Never Use Local Chat</h3>
-            <p>
-                One of the largest benefits of wormholes is that no one appears in the local chat. This is also one of the most dangerous parts about it.
-                Someone could be in your wormhole right now, cloaked up and watching you, and you would never know. 
-                By typing in local chat, you're broadcasting to everyone there, telling them "Hey, look I'm in this wormhole right now".
-                Don't give them that advantage, stay hidden, and don't use local chat.
-            </p>
+
+    <div class="container table-row">
+        <div ng-click="fleetUpActive = !fleetUpActive;" class="row table-header">
+            <div class="col-sm-12">
+                <i ng-show="!fleetUpActive" class="fas fa-chevron-right"></i>
+                <i ng-show="fleetUpActive" class="fas fa-chevron-down"></i>
+                <h3>Fleet up</h3>
+            </div>
+        </div>
+        <div ng-show="fleetUpActive" class="row  table-body">
+            <div class="col-sm-12">
+                <p>
+                    ...
+                </p>
+            </div>
         </div>
     </div>
-    <div class="row">
-        <div class="col-sm-12">
-            <h3>Don't go AFK</h3>
-            <p>
-                With immenent danger all around it's important to stay alert. 
-                You should always be prepared to warp yourself to safety if the need arises.
-                This is a fact in  all of EvE, but especially in wormholes.
-                If you need to leave for a bathroom break, to grab some water, anything;
-                either warp to a safe and cloak yourself, or simply dock at the station.
-            </p>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-sm-12">
-            <h3>If Enemies are around. Dock. Up.</h3>
-            <p>
-                PvPers have a different mindset then you or I. 
-                Fighting them only encourages them, killing them makes them want to come back. 
-                The best way to get rid of them is to ignore them. To dock up and wait them out.
-            </p>
-            <p>
-                If we've connected to a system filled with enemies, we should keep eyes on the wormhole at all times.
-                We should try to NOT show ourselves to them if possible, and certainly not engage them.
-                Rolling a wormhole with enemies on the other side will only attract attention, as those people in local will see 1 character coming in and out of their system constantly.
-                It's best not to provoke them, and instead let the wormhole die naturally over time.
-            </p>
-            <p>
-                If enemies are currently in our Wormhole, then unfortunately it's time to dock up.
-                There's nothing you can do (to be finished...)
-            </p>
-        </div>
-    </div>
+    
 </div>
