@@ -12,18 +12,16 @@
             <p>
                 Artifical Acqusitions is a corporation that strives to allow players to set and obtain their own goals. 
                 We try to enable players to have the freedom to do what they want, when they want, and how they want.
-                However there are times when we must restrict what's allowed for the safety of everyone envolved, and wormholes just happen to be one of those cases.
-                The goal of these rules is not to limit what you as a player can do, but instead to help ensure the safety of you, your ship, and your precious cargo.
+                However there are times when we must follow specific procedures for the safety of everyone involved, and wormholes just happen to be one of those cases.
+                The goal of these procedures is not to limit what you as a player can do, but instead to help ensure the safety of you, your ship, and your precious cargo.
             </p>
             <p>
-                This page is here to serve multiple purposes. 
-                For players new to wormholes we will provide information on important things to know about, such as D-Scan, Wormhole-Rolling, etc.
-                We also want to form a cohesive set of rules that everyone can follow. Rules that will help ensure the safety of our people.
+                This page will provide information to form a cohesive set of rules that will maximize corp and individual member's experience in WSpace, and help ensure the safety of our people.
             </p>
         </div>
     </div>
 
-    <h2>The Rules</h2>
+    <h2>Rules and Procedures</h2>
 
     <div class="container table-row">
         <div ng-click="youWillDieActive = !youWillDieActive;" class="row table-header">
@@ -46,6 +44,28 @@
             </div>
         </div>
     </div>
+
+    <div class="container table-row">
+        <div ng-click="safetyActive = !safetyActive;" class="row table-header">
+            <div class="col-sm-12">
+                <i ng-show="!safetyActive" class="fas fa-chevron-right"></i>
+                <i ng-show="safetyActive" class="fas fa-chevron-down"></i>
+                <h3>Safety not Gaurenteed</h3>
+            </div>
+        </div>
+        <div ng-show="safetyActive" class="row  table-body">
+            <div class="col-sm-12">
+                <p>
+                    Similar to the section "You. Will. Die." it's important to call out that your safety is not gaurenteed. 
+                    If you get complacent or comfortable, and start losing attention to the game, things can get ugly fast.
+                </p>
+                <p>
+                    Stay alert, stay active, and don't get caught off guard. 
+                </p>
+            </div>
+        </div>
+    </div>
+
 
     <div class="container table-row">
         <div ng-click="dScanActive = !dScanActive;" class="row table-header">
@@ -205,9 +225,8 @@
         <div ng-show="fleetUpActive" class="row  table-body">
             <div class="col-sm-12">
                 <p>
-                    This is less of a rule, and more of a recommendation. 
                     Not everyone in the corp will be in the wormhole, and all of those who are may not be paying attention to the corp chat.
-                    Instead form a fleet with everyone in the hole, miners and site runners in the same fleet. 
+                    Check for the standing fleet in the fleet finder, and if you don't see one then create one.
                     This way if someone does get tackled on a belt or a site, everyone in the hole can immedately warp to their aid. 
                 </p>
             </div>
@@ -219,6 +238,28 @@
 
     <h2>Guides</h2>
 
+    <div class="container table-row">
+        <div ng-click="whSpaceActive = !whSpaceActive;" class="row table-header">
+            <div class="col-sm-12">
+                <i ng-show="!whSpaceActive" class="fas fa-chevron-right"></i>
+                <i ng-show="whSpaceActive" class="fas fa-chevron-down"></i>
+                <h3>What is Wormhole Space?</h3>
+            </div>
+        </div>
+        <div ng-show="whSpaceActive" class="row  table-body">
+            <div class="col-sm-12">
+                <p>
+                    Wormhole space, or J-Space as it's sometimes called, are solar systems that can only be reached by the use of wormholes.
+                    These systems exist outside of the New Eden solar systems, and thus offer no protection or safety that your standard systems provide.
+                    Similar to Null-Sec space where there's no restriction on player vs. player engagements, but wormholes come with extra danger including no local chat.
+                    They offer great prosperity to players willing to adventure in to them, but with that prosperity comes great risk. 
+                </p>
+                <p>
+                    To be continued...
+                </p>
+            </div>
+        </div>
+    </div>
     <div class="container table-row">
         <div ng-click="holeRolingActive = !holeRolingActive;" class="row table-header">
             <div class="col-sm-12">
