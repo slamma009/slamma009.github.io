@@ -233,6 +233,7 @@
         </div>
     </div>
 
+
     <br />
     <br />
 
@@ -345,6 +346,58 @@
                     Compare this Id to the table found on <a href="https://wiki.eveuniversity.org/Wormhole_attributes">Eve University</a>, which can also simply be found by googling "EvE Wormhole Attributes".
                     In our example of Q003 you can see that the wormhole leads to Null-Sec, has 1,000,000,000 kg of mass, a max individual mass of 5,000,000 kg, and a lifespan of 16 hours.
                 </p>
+            </div>
+        </div>
+    </div>
+    <div class="container table-row">
+        <div ng-click="bookmarksActive = !bookmarksActive;" class="row table-header">
+            <div class="col-sm-12">
+                <i ng-show="!bookmarksActive" class="fas fa-chevron-right"></i>
+                <i ng-show="bookmarksActive" class="fas fa-chevron-down"></i>
+                <h3>Bookmarks and You</h3>
+            </div>
+        </div>
+        <div ng-show="bookmarksActive" class="row  table-body">
+            <div class="col-sm-12">
+                <p>
+                    Living in a wormhole means a reliance on bookmarks. 
+                    In order to help pilots see at a glance what anomalies have been scanned and bookmarked, we've come up with a system of bookmark names to give plenty of information at a glance while staying organized. 
+                    The basic convention is <code>(TYPE) (INFORMATION) (SIGNATURE)</code>.
+                    More detailed examples are bellow for each type of anomaly, but first lets break down these values.
+                </p>
+                <p><code>TYPE</code> refers to the type of anomaly. Wormhole = WH, GAS = gas site, etc.</p>
+                <p><code>INFORMATION</code> is any relevant information about the Wormhole. This is expanded on in each section bellow.</p>
+                <p><code>SIGNATURE</code> is the actual anomaly signature in the probe launcher. This way we can ensure we don't spend time re-scanning anomalies we've already bookmarked.</p>
+                <h4>Wormholes</h4>
+                <p>In order to give as much information as possible we've come up with this naming convention</p>
+                <p><code>WH (SYSTEMTYPE) (SYSTEM) (MAXSHIP) (WHNAME) (SIGNATURE)</code></p>
+                <p>
+                    <code>SYSTEMTYPE</code> refers to the type of system the wormhole leads to.
+                    High Sec = HS, Low Sec = LS, Null Sec = NUL.
+                    For WH's that lead to J-Space, this value would be the Class of the Wormhole, C1/C2/C3/C4 respectively.
+                    For Thera this value is just skipped
+                </p>
+                <p>
+                    <code>SYSTEM</code>just simply refers to the name of the system the Wormhole leads to
+                </p>
+                <p>
+                    <code>MAXSHIP</code> refers to the maximium ship size allowed through the wormhole. 
+                    This information can be found by clicking Show Info on the WH itself.
+                    Large = L, Medium = M, Small = S.
+                    If there is no restriction on ship size, then leave this as a -.
+                </p>
+                <p>
+                    <code>WHNAME</code> refers to the name of the Wormhole itself. 
+                    This information can be found by clicking Show Info on the WH itself.
+                    You can use the name by searching it in google to find out more useful information about it.
+                </p>
+
+                <p>Examples:</p>
+                <ul>
+                    <li><code>WH HS Hotrardik L B274 YT0-321</code></li>
+                    <li><code>WH C4 J123456 S E175 X3F-6M0</code></li>
+                    <li><code>WH Thera - M164 X3F-6M0</code></li>
+                </ul>
             </div>
         </div>
     </div>
