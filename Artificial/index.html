@@ -368,6 +368,8 @@
                 <p><code>TYPE</code> refers to the type of anomaly. Wormhole = WH, GAS = gas site, etc.</p>
                 <p><code>INFORMATION</code> is any relevant information about the Wormhole. This is expanded on in each section bellow.</p>
                 <p><code>SIGNATURE</code> is the actual anomaly signature in the probe launcher. This way we can ensure we don't spend time re-scanning anomalies we've already bookmarked.</p>
+                
+                
                 <h4>Wormholes</h4>
                 <p>In order to give as much information as possible we've come up with this naming convention</p>
                 <p><code>WH (SYSTEMTYPE) (SYSTEM) (MAXSHIP) (WHNAME) (SIGNATURE)</code></p>
@@ -378,7 +380,7 @@
                     For Thera this value is just skipped
                 </p>
                 <p>
-                    <code>SYSTEM</code>just simply refers to the name of the system the Wormhole leads to
+                    <code>SYSTEM</code> just simply refers to the name of the system the Wormhole leads to
                 </p>
                 <p>
                     <code>MAXSHIP</code> refers to the maximium ship size allowed through the wormhole. 
@@ -397,6 +399,41 @@
                     <li><code>WH HS Hotrardik L B274 YT0-321</code></li>
                     <li><code>WH C4 J123456 S E175 X3F-6M0</code></li>
                     <li><code>WH Thera - M164 X3F-6M0</code></li>
+                </ul>
+
+                <h4>Gas Sites</h4>
+                <p>
+                    Since Gas sites in Wormhole space contain only fullerite we've opted to include each resource number in the bookmark.
+
+                    <code>GAS (RESOURCEX) (RESOURCEY) (RESOURCEZ) (SIGNATURE)</code>.
+                </p>
+                <p>
+                    Simply put, start with the word GAS, then put each resource number, and finally the signature of the anomaly.
+                </p>
+                <p>Examples:</p>
+                <ul>
+                    <li><code>GAS C58 C60 YT0-321</code></li>
+                    <li><code>GAS C72 C84 YT0-321</code></li>
+                </ul>
+
+                <h4>Combat, Data, Relic</h4>
+                <p>
+                    These signatures are much simpler then the others. 
+                    <code>(TYPE) (NAME) (SIGNATURE)</code>.
+                </p>
+                <p> 
+                    <code>TYPE</code> simply refers to the type of the anomaly. 
+                    For Combat sites it's COMBAT, for Data sites its DATA, and for Relic sites it's RELIC.
+
+                </p>
+                <p>
+                    <code>NAME</code> is just as simple as the type, and refers to the name of the site. 
+                </p>
+                <p>Examples:</p>
+                <ul>
+                    <li><code>COMBAT Perimeter Camp YT0-321</code></li>
+                    <li><code>DATA Unsecured Perimeter Amplifier X3F-6M0</code></li>
+                    <li><code>RELIC Forgotten Perimeter Coronation Platform X3F-6M0</code></li>
                 </ul>
             </div>
         </div>
