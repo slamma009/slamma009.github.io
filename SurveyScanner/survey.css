@@ -3,6 +3,10 @@ textarea {
     height:20em;
 }
 
+input{
+    width:100%;
+}
+
 h2 {
     font-weight: bold;
     color : #e0d699;
@@ -50,6 +54,16 @@ h2 {
     text-align: center;
 }
 
+.left-align {
+    text-align: left;
+}
+
 .table-row {
 	padding:12 0;
+}
+
+.save-select { 
+    text-decoration: none;
+    color:inherit;
+    
 }

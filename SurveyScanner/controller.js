@@ -1,8 +1,10 @@
 app.controller('surveyController', function ($scope){
 
-    $scope.surveyString = "";
     $scope.surveyResult = {};
     $scope.groupsOnly = true;
+    $scope.saveName = "Planet I - 1";
+    $scope.savedResults = [];
+
     $scope.copyResults = function() {
         let computed = "Survey Results\nBelt Total: " + addNumberCommas($scope.surveyResult.m3) + " m3\n\n";
 
@@ -104,7 +106,38 @@ app.controller('surveyController', function ($scope){
             oreGroups:toArray(oreGroups)
         }
     };
+
+    $scope.save = function() {
+        if(isEmptyOrSpaces($scope.saveName))
+        {
+            alert("You need to enter a save name of at least 1 character")
+            return;
+        }
+        if(isEmptyOrSpaces($scope.scanString))
+        {
+            alert("Unable to save an empty scan. Please paste a scan first.");
+            return;
+        }
+
+        var savedResult = {
+            name: $scope.saveName,
+            scan: $scope.scanString
+        };
+        console.log($scope.scanString);
+        
+        $scope.savedResults.push(savedResult);
+    }
+
+    $scope.loadResult = function(index) {
+        console.log($scope.savedResults[index].scan);
+        $scope.scanString = $scope.savedResults[index].scan;
+        $scope.parseSurvey($scope.scanString);
+    }
     
+    $scope.deleteResult = function(index) {
+        $scope.savedResults.splice(index, 1);
+    }
+
     function toArray(oreGroups)
     {
         let castedGroup = [];
@@ -160,5 +193,9 @@ app.controller('surveyController', function ($scope){
         // copy & cleanup
         document.execCommand('copy');
         copyElement.remove();
+    }
+
+    function isEmptyOrSpaces(str){
+        return str === undefined || str.match(/^ *$/) !== null;
     }
 });

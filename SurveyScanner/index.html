@@ -59,6 +59,19 @@
             </div>
          </div>
       </div>
-      <div class="col-lg-2"></div>
+      <div class="col-lg-2 text-center">
+         <h3>Save Scan</h3>
+         <p class="small-text">These scans are only saved on this instance. Reloading the page will cause them to be lost.</p>
+         <input ng-model="saveName" type="textbox" placeholder="Save Name"/>
+         <div class="drop-area left-align">
+            <ul>
+               <li ng-repeat="save in savedResults">
+                  <i class="fa fa-trash" ng-click="deleteResult($index)"></i> 
+                  <a ng-click="loadResult($index)">{{$index}} - {{save.name}}</a></li>
+            </ul>
+         </div>
+         <button class="btn btn-dark" ng-click="save()">save</button>
+         <button class="btn btn-dark" ng-click="savedResults=[]">Clear</button>
+      </div>
    </div>
 </div>
