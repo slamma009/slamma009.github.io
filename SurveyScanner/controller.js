@@ -5,6 +5,8 @@ app.controller('surveyController', function ($scope){
     $scope.saveName = "Planet I - 1";
     $scope.savedResults = [];
 
+    $scope.unsavedChanges = false;
+
     $scope.copyResults = function() {
         let computed = "Survey Results\nBelt Total: " + addNumberCommas($scope.surveyResult.m3) + " m3\n\n";
 
@@ -43,6 +45,7 @@ app.controller('surveyController', function ($scope){
         share(computed);
     }
     $scope.parseSurvey = function (str) {
+        $scope.unsavedChanges = true;
         let overall = 0;
         let oreGroups = [];
         let lines = str.trim().split("\n")
@@ -123,15 +126,21 @@ app.controller('surveyController', function ($scope){
             name: $scope.saveName,
             scan: $scope.scanString
         };
-        console.log($scope.scanString);
         
         $scope.savedResults.push(savedResult);
+        $scope.unsavedChanges = false;
     }
 
     $scope.loadResult = function(index) {
-        console.log($scope.savedResults[index].scan);
+        if($scope.unsavedChanges){
+            if(!confirm("This will clear the current scan data, are you sure?"))
+            {
+                return;
+            }
+        }
         $scope.scanString = $scope.savedResults[index].scan;
         $scope.parseSurvey($scope.scanString);
+        $scope.unsavedChanges = false;
     }
     
     $scope.deleteResult = function(index) {
